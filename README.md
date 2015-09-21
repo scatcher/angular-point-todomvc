@@ -1,4 +1,5 @@
-# [angular-point](https://github.com/scatcher/angular-point) TodoMVC Example (Based on [TypeScript & AngularJS TodoMVC](http://todomvc.com/examples/typescript-angular/#/))
+# [angular-point](https://github.com/scatcher/angular-point) TodoMVC Example 
+#### Based on [TypeScript & AngularJS TodoMVC](http://todomvc.com/examples/typescript-angular/#/)
 
 
 ## Setup
@@ -28,7 +29,7 @@ Compile Changes to TypeScript:
 
     tsc
     
--- or to compile and watch for changes --
+or to compile and watch for changes ("Ctrl + c" to abort once done)
     
     tsc -w
 
