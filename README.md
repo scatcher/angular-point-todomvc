@@ -13,18 +13,18 @@ Ensure Gulp and Bower are available:
     npm install --global gulp bower
     
     
-Install NPM Dependencies
+Install NPM Dependencies:
 
     npm install
     
-Install Bower Dependencies
+Install Bower Dependencies:
 
     bower install
 
 ## Running
 
     
-Compile Changes to TypeScript
+Compile Changes to TypeScript:
 
     tsc
     
@@ -32,7 +32,7 @@ Compile Changes to TypeScript
     
     tsc -w
 
-Serve Offline Version Locally in Browser
+Serve Offline Version Locally in Browser:
 
     gulp serve
     
