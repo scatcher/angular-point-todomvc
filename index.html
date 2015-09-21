@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="todomvc" data-framework="typescript">
+	<head>
+		<meta charset="utf-8">
+		<title>Typescript & AngularJS • TodoMVC</title>
+
+        <!-- build:css styles.css -->
+        <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+        <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+        <!-- endbuild -->
+
+		<style>[ng-cloak] { display: none; }</style>
+	</head>
+	<body ng-controller="todoController as vm">
+        <div ng-include="'app/controllers/TodoView.html'"></div>
+
+        <!-- build:js vendor.js -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/lodash/lodash.js"></script>
+		<script src="bower_components/angular-point/dist/angular-point.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:remove -->
+        <!--REMOVE THESE TO WORK ONLINE-->
+        <script src="offline/apCachedXML.js"></script>
+        <script src="bower_components/angular-point/test/mock/apMockBackend.mock.js"></script>
+		<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+        <!--END OFFLINE SCRIPTS-->
+        <!-- endbuild -->
+
+        <!-- build:js app.js -->
+		<script src="app/app.module.js"></script>
+		<script src="app/models/todosModel.js"></script>
+		<script src="app/controllers/TodoController.js"></script>
+		<script src="app/directives/TodoBlur.js"></script>
+		<script src="app/directives/TodoFocus.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js templatecache.js -->
+        <!-- endbuild -->
+
+    </body>
+</html>

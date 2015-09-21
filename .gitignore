@@ -1,0 +1,11 @@
+# Dependencies
+node_modules
+bower_components
+
+# IDE
+.idea
+.vscode
+
+.DS_Store
+npm-debug.log
+Thumbs.db
