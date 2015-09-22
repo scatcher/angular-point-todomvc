@@ -1,3 +1,98 @@
+/// <reference path='_all.ts' />
+/**
+ * The main TodoMVC app module.
+ *
+ * @type {angular.Module}
+ */
+var todos;
+(function (todos) {
+    'use strict';
+    var dependencies = ['angularPoint'];
+    var offline = false;
+    if (window.location.href.indexOf('localhost') > -1 ||
+        window.location.href.indexOf('http://0.') > -1 ||
+        window.location.href.indexOf('http://10.') > -1 ||
+        window.location.href.indexOf('http://127.') > -1 ||
+        window.location.href.indexOf('http://192.') > -1) {
+        offline = true;
+        /** Add in mock library if working offline to prevent us from making outside requests */
+        dependencies.push('ngMockE2E');
+    }
+    angular.module('todomvc', dependencies)
+        .config(config);
+    function config(apConfig) {
+        //TODO: Update with the site URL where most of your lists reside
+        apConfig.defaultUrl = '//MY_SERVER.COM/MY_SITE';
+    }
+    if (offline) {
+        angular.module('todomvc', dependencies)
+            .run(function ($httpBackend) {
+            // Don't mock the html views
+            $httpBackend.whenGET(/\.html$/).passThrough();
+        });
+    }
+})(todos || (todos = {}));
+//# sourceMappingURL=app.module.js.map
+/// <reference path='../_all.ts' />
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var todos;
+(function (todos) {
+    'use strict';
+    var TodoItem = (function (_super) {
+        __extends(TodoItem, _super);
+        function TodoItem(obj) {
+            _super.call(this);
+            _.assign(this, obj);
+        }
+        return TodoItem;
+    })(ap.ListItem);
+    todos.TodoItem = TodoItem;
+    var TodosModel = (function (_super) {
+        __extends(TodosModel, _super);
+        function TodosModel() {
+            /********************* Model Definition ***************************************/
+            /**
+             * @ngdoc object
+             * @name TodosModel
+             * @description
+             *  Model Constructor
+             */
+            _super.call(this, {
+                factory: TodoItem,
+                list: {
+                    /**Maps to the offline XML file in dev folder (no spaces) */
+                    title: 'Todo',
+                    //TODO: You need to set the list GUID below
+                    /**List GUID can be found in list properties in SharePoint designer */
+                    guid: '{C2477C93-BF7D-4CCE-8700-9399C90CD851}',
+                    customFields: [
+                        /** Array of objects mapping each SharePoint field to a property on a list item object */
+                        { staticName: 'Title', objectType: 'Text', mappedName: 'title' },
+                        { staticName: 'Completed', objectType: 'Boolean', mappedName: 'completed' }
+                    ]
+                }
+            });
+            var model = this;
+            /*********************************** Queries ***************************************/
+            /** Fetch data (pulls local xml if offline named model.list.title + '.xml')
+             *  Initially pulls all requested data.  Each subsequent call just pulls records that have been changed,
+             *  updates the model, and returns a reference to the updated data array
+             */
+            model.registerQuery({ name: 'primary' });
+        }
+        return TodosModel;
+    })(ap.Model);
+    todos.TodosModel = TodosModel;
+    angular
+        .module('todomvc')
+        .service('todosModel', TodosModel);
+})(todos || (todos = {}));
+//# sourceMappingURL=TodosModel.js.map
 /// <reference path='../_all.ts' />
 var todos;
 (function (todos_1) {
@@ -159,3 +254,49 @@ var todos;
         .controller('todoController', TodoController);
 })(todos || (todos = {}));
 //# sourceMappingURL=TodoController.js.map
+/// <reference path='../_all.ts' />
+var todos;
+(function (todos) {
+    'use strict';
+    /**
+     * Directive that executes an expression when the element it is applied to loses focus.
+     */
+    function TodoBlur() {
+        return {
+            link: function ($scope, element, attributes) {
+                element.bind('blur', function () { $scope.$apply(attributes.todoBlur); });
+                $scope.$on('$destroy', function () { element.unbind('blur'); });
+            }
+        };
+    }
+    todos.TodoBlur = TodoBlur;
+    angular
+        .module('todomvc')
+        .directive('todoBlur', TodoBlur);
+})(todos || (todos = {}));
+//# sourceMappingURL=TodoBlur.js.map
+/// <reference path='../_all.ts' />
+var todos;
+(function (todos) {
+    'use strict';
+    /**
+     * Directive that places focus on the element it is applied to when the expression it binds to evaluates to true.
+     */
+    function TodoFocus($timeout) {
+        return {
+            link: function ($scope, element, attributes) {
+                $scope.$watch(attributes.todoFocus, function (newval) {
+                    if (newval) {
+                        $timeout(function () { return element[0].focus(); }, 0, false);
+                    }
+                });
+            }
+        };
+    }
+    todos.TodoFocus = TodoFocus;
+    TodoFocus.$inject = ['$timeout'];
+    angular
+        .module('todomvc')
+        .directive('todoFocus', TodoFocus);
+})(todos || (todos = {}));
+//# sourceMappingURL=TodoFocus.js.map
