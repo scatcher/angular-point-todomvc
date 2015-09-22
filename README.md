@@ -1,9 +1,9 @@
 # [angular-point](https://github.com/scatcher/angular-point) TodoMVC Example 
-#### Based on [TypeScript & AngularJS TodoMVC](https://github.com/tastejs/todomvc/tree/gh-pages/examples/typescript-angular)
+Based on [TypeScript & AngularJS TodoMVC](https://github.com/tastejs/todomvc/tree/gh-pages/examples/typescript-angular)
 
 
 ## Demo
-Here's a [demo](http://scatcher.github.io/angular-point-todomvc) if you don't feel like building the application yourself.  We're using the offline/development functionality built into [angular-point](https://github.com/scatcher/angular-point) and mocking a SharePoint backend with cached XML.  Data doesn't persist after page refreshes but by removing a single script from this file it would instead manipulate a SharePoint list and persist between sessions.
+Here's a [demo](http://scatcher.github.io/angular-point-todomvc) if you don't feel like building the application yourself.  We're using the offline/development functionality built into [angular-point](https://github.com/scatcher/angular-point) and mocking a SharePoint backend with cached XML.  Data doesn't persist after refreshes but by removing a the offline.js script from this file it would instead manipulate a SharePoint list and persist between sessions.
 
 ## Setup
 
@@ -26,7 +26,6 @@ Install Bower Dependencies:
     bower install
 
 ## Running
-
     
 Compile Changes to TypeScript:
 
