@@ -1,5 +1,5 @@
 # [angular-point](https://github.com/scatcher/angular-point) TodoMVC Example 
-#### Based on [TypeScript & AngularJS TodoMVC](http://todomvc.com/examples/typescript-angular/#/)
+#### Based on [TypeScript & AngularJS TodoMVC](https://github.com/tastejs/todomvc/tree/gh-pages/examples/typescript-angular)
 
 
 ## Demo
