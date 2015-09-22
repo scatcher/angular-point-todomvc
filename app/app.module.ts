@@ -16,7 +16,8 @@ module todos {
         window.location.href.indexOf('http://0.') > -1 ||
         window.location.href.indexOf('http://10.') > -1 ||
         window.location.href.indexOf('http://127.') > -1 ||
-        window.location.href.indexOf('http://192.') > -1) {
+        window.location.href.indexOf('http://192.') > -1 ||
+        window.location.href.indexOf('github.io') > -1){
 
         offline = true;
         /** Add in mock library if working offline to prevent us from making outside requests */
