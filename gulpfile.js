@@ -4,6 +4,8 @@ var useref = require('gulp-useref');
 var ghPages = require('gulp-gh-pages');
 var concat = require('gulp-concat');
 var replace = require('gulp-replace');
+var sourcemaps = require('gulp-sourcemaps');
+var gulpif = require('gulp-if');
 
 
 gulp.task('serve', function() {
@@ -20,7 +22,9 @@ gulp.task('useref', function () {
 
     return gulp.src('index.html')
         .pipe(assets)
+        .pipe(gulpif('*.js', sourcemaps.init({ loadMaps: true })))
         .pipe(assets.restore())
+        .pipe(sourcemaps.write('.'))
         .pipe(useref())
         .pipe(gulp.dest('dist'));
 });
