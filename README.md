@@ -2,6 +2,9 @@
 #### Based on [TypeScript & AngularJS TodoMVC](http://todomvc.com/examples/typescript-angular/#/)
 
 
+## Demo
+Here's a [demo](http://scatcher.github.io/angular-point-todomvc) if you don't feel like building the application yourself.  We're using the offline/development functionality built into [angular-point](https://github.com/scatcher/angular-point) and mocking a SharePoint backend with cached XML.  Data doesn't persist after page refreshes but by removing a single script from this file it would instead manipulate a SharePoint list and persist between sessions.
+
 ## Setup
 
 Clone project locally:
@@ -57,6 +60,10 @@ through %7d.  My GUID would then be {C2477C93-BF7D-4CCE-8700-9399C90CD851}.
 (6) Set the app default URL to the SharePoint site.  If my list was located at "//MY_SERVER.COM/MY_SITE/Lists/Todo" the 
 site would be "//MY_SERVER.COM/MY_SITE".  If you have lists/libraries on diferent sites you can manually override
 this when defining the model.
+
+(7) Build TypeScript:
+
+    tsc
 
 (7) Build the app:
 
